@@ -1,0 +1,53 @@
+---
+import RootLayout from "@/layouts/root.astro";
+import {
+  appProjects,
+  fullstackProjects,
+  realWorldProjects,
+  staticProjects,
+} from '@/lib/project-data';
+import { Image } from "astro:assets";
+
+const allProjects = [
+  {
+    label: 'Real World Works',
+    projects: realWorldProjects,
+  },
+  {
+    label: 'Fullstacks',
+    projects: fullstackProjects,
+  },
+  {
+    label: 'Web Apps (PWA)',
+    projects: appProjects,
+  },
+  {
+    label: 'Static Sites',
+    projects: staticProjects,
+  },
+]
+---
+
+<RootLayout title="Work - Yagnik Patel">
+  <h1 class="font-bold text-2xl">Some projects that are awesome?</h1>
+  {allProjects.map(cat => (
+    <h2 class="font-bold text-xl mt-8">{cat.label}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {cat.projects.map(project => (
+        <a href={project.links.site} class="block transition hover:shadow-[0_4px_0_#18181b] dark:hover:shadow-[0_4px_0_#e4e4e7] hover:-translate-y-1">
+          <Image class="object-cover" src={project.image} alt={project.name} loading={project.category === "real-world" || project.category === "fullstack" ? "eager" : "lazy"} />
+          <div class="p-2 border-2 border-t-0 space-y-1">
+            <h3 class="font-bold text-lg">{project.name}</h3>
+            <div class="flex gap-1">
+              {project.tech.map(tech => (
+                <span class="bg-zinc-300 dark:bg-zinc-800 px-1 py-0.5 text-xs">{tech}</span>
+              ))}
+            </div>
+            <p class="text-sm line-clamp-3">{project.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  ))}
+  
+</RootLayout>

@@ -1,0 +1,49 @@
+---
+import { ThemeToggle } from "./react/theme-toggle";
+import { Separator } from "./ui/separator";
+---
+
+<header class="pb-4">
+  <nav class="flex justify-between items-center">
+    <a id="terminal-text" class="flex items-center" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal mr-2 size-5"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+      <span class="font-bold">yagnik@portfolio:~<span class="inline-block" id="directory"></span>&#x24;</span>
+    </a>
+    <ul class="flex space-x-4 items-center"><li>$ cd</li>
+      <li><a href="/about" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/about</a></li>
+      <li><a href="/work" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/work</a></li>
+      <li><a href="/imlost" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/i'm lost</a></li>
+      <ThemeToggle client:load />
+    </ul>
+  </nav>
+</header>
+<Separator className="mb-8" />
+
+<script>
+  import { timeline, animate } from "motion"
+
+  const terminalText = document.getElementById('terminal-text')!;
+  const directoryText = document.getElementById('directory')!;
+  let directoryTextWidth = 0;
+  const pathMap: Record<string, string> = {
+    '/': '',
+    '/about': '/about',
+    '/work': '/work',
+    '/imlost': '/i\'m&nbsp;lost',
+  };
+
+  let path = window.location.pathname;
+  directoryText.innerHTML = pathMap[path];
+  directoryTextWidth = directoryText.offsetWidth;
+
+  terminalText.addEventListener("mouseenter", () => {
+    timeline([
+      [directoryText, { opacity: 0, width: directoryText.offsetWidth }],
+      [directoryText, { opacity: 0, width: 0 }, { at: "-0.1" }],
+    ], {duration: 0.25})
+  })
+
+  terminalText.addEventListener("mouseleave", () => {
+    animate(directoryText, { opacity: 1, width: directoryTextWidth + 'px' }, {duration: 0.15})
+  })
+</script>
