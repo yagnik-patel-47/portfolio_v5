@@ -19,6 +19,12 @@ export default function SiteCommandBar() {
 				setIsOpen((open) => !open);
 			}
 		});
+
+		document
+			.querySelector("#command-bar-button")
+			?.addEventListener("click", () => {
+				setIsOpen((open) => !open);
+			});
 	}, []);
 
 	return (
@@ -31,8 +37,12 @@ export default function SiteCommandBar() {
 						{commandGroup.commands.map((command) => (
 							<CommandItem
 								className="!py-2"
-								onSelect={() => {
-									command.function();
+								onSelect={async () => {
+									try {
+										await command.function();
+									} catch (error) {
+										alert(error.message);
+									}
 									setIsOpen(false);
 								}}
 								key={command.id}

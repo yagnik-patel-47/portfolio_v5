@@ -74,8 +74,8 @@ const socialCommands = [
 	{
 		id: "copy mail",
 		label: "copy mail to clipboard",
-		function: () => {
-			navigator.clipboard.writeText("yagnikp@proton.me");
+		function: async () => {
+			await navigator.clipboard.writeText("yagnikp@proton.me");
 		},
 		icon: Copy,
 	},
@@ -99,14 +99,14 @@ const socialCommands = [
 
 export const commands = [
 	{
-		id: "social",
-		label: "Social",
-		commands: socialCommands,
-	},
-	{
 		id: "navigation",
 		label: "Navigation",
 		commands: navigationCommands,
+	},
+	{
+		id: "social",
+		label: "Social",
+		commands: socialCommands,
 	},
 	{
 		id: "theme",

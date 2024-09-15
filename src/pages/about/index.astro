@@ -2,11 +2,12 @@
 import RootLayout from "@/layouts/root.astro";
 import { Image } from "astro:assets";
 import ProfileImage from "@/assets/profile.webp";
+import { Separator } from "@/components/ui/separator";
 ---
 
 <RootLayout title="About - Yagnik Patel">
   <main class="mb-8">
-    <section class="mb-8 border-b pb-4">
+    <section class="pb-4">
       <div class="flex items-center mb-8">
         <Image
           src={ProfileImage}
@@ -18,38 +19,36 @@ import ProfileImage from "@/assets/profile.webp";
         />
         <h1 class="text-2xl font-bold">Yagnik Patel</h1>
       </div>
-      <div class="space-y-4">
+      <div class="space-y-4 max-w-prose">
         <p>
-          Hello! I'm Yagnik Patel, a passionate computer science student and aspiring web developer. 
-          I'm currently pursuing my degree at New York University, where I'm honing my skills in 
-          various programming languages and cutting-edge technologies.
+          Hi there! I am a second-year undergraduate studying computer science and a self-taught web developer. Being a computer engineer, I want to be really good at solving problems.
         </p>
-        <p>
-          My journey in tech began when I built my first website at the age of 14. Since then, 
-          I've been captivated by the power of code to solve real-world problems and create 
-          meaningful experiences. I'm particularly interested in web development, artificial 
-          intelligence, and the intersection of technology and sustainability.
-        </p>
-        <p>
-          When I'm not coding or studying, you can find me exploring the vibrant tech scene 
-          in New York City, contributing to open-source projects, or mentoring junior developers. 
-          I believe in the power of community and continuous learning in the ever-evolving world of technology.
-        </p>
+        <p>I spend most of my time in front of my laptop&mdash;surfing the internet, reading articles, watching tutorials, and coding fascinating projects.</p>
+        <p>Always eager to connect with tech enthusiasts and create meaningful experiences together.</p>
       </div>
     </section>
 
-    <section>
-      <h2 class="text-lg font-bold mb-2">Interests</h2>
+    <Separator className="mb-8" />
+
+    <section class="mb-4 max-w-prose">
+      <h2 class="text-lg font-bold mb-2">interests</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Web Development (Frontend and Backend)</li>
-        <li>Artificial Intelligence and Machine Learning</li>
-        <li>Open Source Contribution</li>
-        <li>Tech Entrepreneurship</li>
-        <li>Cybersecurity</li>
-        <li>Sustainable Technology</li>
-        <li>Competitive Programming</li>
-        <li>UI/UX Design</li>
+        <li>computer (duh!)</li>
+        <li>web tech</li>
+        <li>AI/ML (low-key)</li>
+        <li>design pattern</li>
+        <li>UI micro interactions</li>
       </ul>
     </section>
+    
+    <section class="mb-4 max-w-prose">
+      <h2 class="text-lg font-bold mb-2">facts</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>I’m introvert.</li>
+        <li>I love playing sports. I'm a pro hooper&mdash;or at least I was when I used to play regularly.</li>
+        <li>I'm super into video games, but I've got it under control.</li>
+      </ul>
+    </section>
+    
   </main>
 </RootLayout>

@@ -1,5 +1,6 @@
 ---
 import { ThemeToggle } from "./react/theme-toggle";
+import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 ---
 
@@ -9,12 +10,15 @@ import { Separator } from "./ui/separator";
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal mr-2 size-5"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
       <span class="font-bold">yagnik@portfolio:~<span class="inline-block" id="directory"></span>&#x24;</span>
     </a>
-    <ul class="flex space-x-4 items-center"><li>$ cd</li>
+    <ul class="md:flex space-x-4 items-center hidden"><li>$ cd</li>
       <li><a href="/about" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/about</a></li>
       <li><a href="/work" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/work</a></li>
       <li><a href="/imlost" class="hover:bg-gray-800 hover:text-gray-200 p-1 dark:hover:bg-gray-200 dark:hover:text-gray-800">/i'm lost</a></li>
       <ThemeToggle client:load />
     </ul>
+    <Button id="command-bar-button" className="size-9 md:hidden" variant="outline" size="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-command size-4"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/></svg>
+    </Button>
   </nav>
 </header>
 <Separator className="mb-8" />
