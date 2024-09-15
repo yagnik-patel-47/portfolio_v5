@@ -37,12 +37,10 @@ export default function SiteCommandBar() {
 						{commandGroup.commands.map((command) => (
 							<CommandItem
 								className="!py-2"
-								onSelect={async () => {
+								onSelect={() => {
 									try {
-										await command.function();
-									} catch (error) {
-										alert(error.message);
-									}
+										command.function();
+									} catch (error) {}
 									setIsOpen(false);
 								}}
 								key={command.id}
