@@ -34,13 +34,13 @@ const allProjects = [
     <h2 class="font-bold text-xl mt-8">{cat.label}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
       {cat.projects.map(project => (
-        <a href={project.links.site} class="block transition hover:shadow-[0_4px_0_#18181b] dark:hover:shadow-[0_4px_0_#e4e4e7] hover:-translate-y-1">
+        <a href={project.links.site} class="block transition hover:shadow-[0_4px_0_hsl(var(--accent))] hover:-translate-y-1">
           <Image class="object-cover" src={project.image} alt={project.name} loading={project.category === "real-world" || project.category === "fullstack" ? "eager" : "lazy"} />
-          <div class="p-2 border-2 border-t-0 space-y-1">
+          <div class="p-2 border-2 border-t-0 space-y-1 border-muted">
             <h3 class="font-bold text-lg">{project.name}</h3>
             <div class="flex gap-1">
               {project.tech.map(tech => (
-                <span class="bg-zinc-300 dark:bg-zinc-800 px-1 py-0.5 text-xs">{tech}</span>
+                <span class="bg-muted text-muted-foreground px-1 py-0.5 text-xs">{tech}</span>
               ))}
             </div>
             <p class="text-xs md:text-sm line-clamp-3">{project.description}</p>
