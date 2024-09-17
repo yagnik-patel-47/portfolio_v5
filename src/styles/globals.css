@@ -74,6 +74,11 @@ html {
 	font-family: "Reddit Mono", monospace;
 	font-optical-sizing: auto;
 	font-style: normal;
+	color-scheme: light;
+}
+
+html.dark {
+	color-scheme: dark;
 }
 
 button,
