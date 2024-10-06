@@ -86,3 +86,21 @@ a,
 input {
 	font-family: "Reddit Mono", monospace;
 }
+
+::view-transition-group(main-content) {
+	animation-timing-function: var(--expo-in);
+}
+
+::view-transition-new(main-content) {
+	animation: fade-up 0.3s;
+}
+
+@keyframes fade-up {
+	from {
+		transform: translateY(1.5rem);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}

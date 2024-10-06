@@ -26,28 +26,32 @@ import { Separator } from "./ui/separator";
 <script>
   import { timeline, animate } from "motion"
 
-  const terminalText = document.getElementById('terminal-text')!;
-  const directoryText = document.getElementById('directory')!;
-  let directoryTextWidth = 0;
-  const pathMap: Record<string, string> = {
-    '/': '',
-    '/about': '/about',
-    '/work': '/work',
-    '/imlost': '/i\'m&nbsp;lost',
-  };
+  document.addEventListener('astro:page-load', setupStuff); 
 
-  let path = window.location.pathname;
-  directoryText.innerHTML = pathMap[path];
-  directoryTextWidth = directoryText.offsetWidth;
-
-  terminalText.addEventListener("mouseenter", () => {
-    timeline([
-      [directoryText, { opacity: 0, width: directoryText.offsetWidth }],
-      [directoryText, { opacity: 0, width: 0 }, { at: "-0.1" }],
-    ], {duration: 0.25})
-  })
-
-  terminalText.addEventListener("mouseleave", () => {
-    animate(directoryText, { opacity: 1, width: directoryTextWidth + 'px' }, {duration: 0.15})
-  })
+  function setupStuff() {
+    const terminalText = document.getElementById('terminal-text')!;
+    const directoryText = document.getElementById('directory')!;
+    let directoryTextWidth = 0;
+    const pathMap: Record<string, string> = {
+      '/': '',
+      '/about': '/about',
+      '/work': '/work',
+      '/imlost': '/i\'m&nbsp;lost',
+    };
+  
+    let path = window.location.pathname;
+    directoryText.innerHTML = pathMap[path];
+    directoryTextWidth = directoryText.offsetWidth;
+  
+    terminalText.addEventListener("mouseenter", () => {
+      timeline([
+        [directoryText, { opacity: 0, width: directoryText.offsetWidth }],
+        [directoryText, { opacity: 0, width: 0 }, { at: "-0.1" }],
+      ], {duration: 0.25})
+    })
+  
+    terminalText.addEventListener("mouseleave", () => {
+      animate(directoryText, { opacity: 1, width: directoryTextWidth + 'px' }, {duration: 0.15})
+    })
+  }
 </script>

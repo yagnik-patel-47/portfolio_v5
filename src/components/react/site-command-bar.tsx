@@ -7,7 +7,8 @@ import {
 	CommandDialog,
 } from "@/components/ui/command";
 import { commands } from "@/lib/site-commands-config";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { DialogTitle } from "../ui/dialog";
 
 export default function SiteCommandBar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function SiteCommandBar() {
 
 	return (
 		<CommandDialog open={isOpen} onOpenChange={setIsOpen}>
+			<DialogTitle className="sr-only">Site Commands</DialogTitle>
 			<CommandInput placeholder="Type a command or search..." />
 			<CommandList>
 				<CommandEmpty>No results found.</CommandEmpty>
@@ -37,16 +39,30 @@ export default function SiteCommandBar() {
 						{commandGroup.commands.map((command) => (
 							<CommandItem
 								className="!py-2"
-								onSelect={() => {
-									try {
-										command.function();
-									} catch (error) {}
-									setIsOpen(false);
-								}}
+								onSelect={
+									command.function
+										? () => {
+												try {
+													command.function();
+												} catch (error) {}
+												setIsOpen(false);
+											}
+										: () => setIsOpen(false)
+								}
 								key={command.id}
+								asChild={!!command.href}
 							>
-								<command.icon className="mr-2 !size-4" />
-								<span>{command.label}</span>
+								{command.href ? (
+									<a href={command.href}>
+										<command.icon className="mr-2 !size-4" />
+										<span>{command.label}</span>
+									</a>
+								) : (
+									<React.Fragment>
+										<command.icon className="mr-2 !size-4" />
+										<span>{command.label}</span>
+									</React.Fragment>
+								)}
 							</CommandItem>
 						))}
 					</CommandGroup>

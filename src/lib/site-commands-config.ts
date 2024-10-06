@@ -7,37 +7,46 @@ import {
 	Copy,
 } from "lucide-react";
 
+type Command = {
+	id: string;
+	label: string;
+	type: "link" | "function";
+	href?: string;
+	function?: () => void;
+	icon: React.ElementType;
+};
+
 const navigationCommands = [
 	{
 		id: "navigate-home",
 		label: "cd home",
-		function: () => {
-			window.location.href = "/";
-		},
+		type: "link",
+		href: "/",
+		function: null,
 		icon: Navigation,
 	},
 	{
 		id: "navigate-about",
 		label: "cd about",
-		function: () => {
-			window.location.href = "/about";
-		},
+		type: "link",
+		href: "/about",
+		function: null,
 		icon: Navigation,
 	},
 	{
 		id: "navigate-work",
 		label: "cd work",
-		function: () => {
-			window.location.href = "/work";
-		},
+		type: "link",
+		href: "/work",
+		function: null,
 		icon: Navigation,
 	},
 	{
 		id: "navigate-imlost",
 		label: "cd i'm lost",
-		function: () => {
-			window.location.href = "/imlost";
-		},
+		type: "link",
+		href: "/imlost",
+		function: null,
 		icon: Navigation,
 	},
 ];
@@ -46,6 +55,8 @@ const themeCommands = [
 	{
 		id: "theme-light",
 		label: "set theme light",
+		type: "function",
+		href: null,
 		function: () => {
 			document.documentElement.classList.remove("dark");
 		},
@@ -54,6 +65,8 @@ const themeCommands = [
 	{
 		id: "theme-dark",
 		label: "set theme dark",
+		type: "function",
+		href: null,
 		function: () => {
 			document.documentElement.classList.add("dark");
 		},
@@ -62,6 +75,8 @@ const themeCommands = [
 	{
 		id: "theme-system",
 		label: "set theme system",
+		type: "function",
+		href: null,
 		function: () => {
 			const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 			document.documentElement.classList[isDark ? "add" : "remove"]("dark");
@@ -74,14 +89,18 @@ const socialCommands = [
 	{
 		id: "copy mail",
 		label: "copy mail to clipboard",
+		type: "function",
+		href: null,
 		function: async () => {
-			await navigator.clipboard.writeText("yagnikp@proton.me");
+			await navigator.clipboard.writeText("yagnik47.dev@gmail.com");
 		},
 		icon: Copy,
 	},
 	{
 		id: "soical-twitter",
 		label: "open twitter account",
+		type: "function",
+		href: null,
 		function: () => {
 			window.open("https://x.com/yagnik_pt", "_blank");
 		},
@@ -90,6 +109,8 @@ const socialCommands = [
 	{
 		id: "soical-github",
 		label: "open github account",
+		type: "function",
+		href: null,
 		function: () => {
 			window.open("https://github.com/yagnik-patel-47", "_blank");
 		},
