@@ -95,6 +95,10 @@ input {
 	animation: fade-up 0.3s;
 }
 
+::view-transition-old(main-content) {
+	opacity: 0;
+}
+
 @keyframes fade-up {
 	from {
 		transform: translateY(1.5rem);
