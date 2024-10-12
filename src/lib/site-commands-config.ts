@@ -120,11 +120,6 @@ const socialCommands = [
 
 export const commands = [
 	{
-		id: "navigation",
-		label: "Navigation",
-		commands: navigationCommands,
-	},
-	{
 		id: "social",
 		label: "Social",
 		commands: socialCommands,
@@ -133,5 +128,10 @@ export const commands = [
 		id: "theme",
 		label: "Theme",
 		commands: themeCommands,
+	},
+	{
+		id: "navigation",
+		label: "Navigation",
+		commands: navigationCommands,
 	},
 ];
